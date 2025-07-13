@@ -1,0 +1,321 @@
+/* Custom styles for game developer portfolio */
+
+:root {
+    --game-primary: #007bff;
+    --game-secondary: #6c757d;
+    --game-success: #28a745;
+    --game-warning: #ffc107;
+    --game-danger: #dc3545;
+    --game-info: #17a2b8;
+    --game-dark: #343a40;
+    --game-light: #f8f9fa;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--bs-dark) 0%, #1a1a1a 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-stats .stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero-visual {
+    position: relative;
+    z-index: 2;
+}
+
+.tech-stack-visual {
+    animation: float 6s ease-in-out infinite;
+}
+
+.tech-grid .tech-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tech-grid .tech-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-grid .tech-item small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Skills and Cards */
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Project Cards */
+.project-card {
+    transition: all 0.3s ease;
+    border: none;
+    background: var(--bs-dark);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+}
+
+/* Blog Styles */
+.blog-post-card {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.blog-content {
+    line-height: 1.8;
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-content h6 {
+    color: var(--bs-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.blog-content ul {
+    margin-bottom: 1.5rem;
+}
+
+/* Contact Styles */
+.contact-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-icon {
+    width: 60px;
+    text-align: center;
+}
+
+/* Timeline Styles */
+.timeline .card {
+    position: relative;
+    margin-left: 2rem;
+}
+
+.timeline .card::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--bs-primary);
+    border-radius: 50%;
+}
+
+.timeline .card::after {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 2.5rem;
+    width: 2px;
+    height: calc(100% + 1rem);
+    background: rgba(0, 123, 255, 0.3);
+}
+
+.timeline .card:last-child::after {
+    display: none;
+}
+
+/* Navigation */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--bs-primary), #0056b3);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #0056b3, var(--bs-primary));
+    transform: translateY(-2px);
+}
+
+/* Cards */
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(0, 123, 255, 0.3);
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+}
+
+/* Empty State */
+.empty-state {
+    padding: 3rem 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 2rem;
+        min-height: auto;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .tech-grid .col-4 {
+        margin-bottom: 1rem;
+    }
+    
+    .timeline .card {
+        margin-left: 0;
+    }
+    
+    .timeline .card::before,
+    .timeline .card::after {
+        display: none;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Focus States */
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+.display-4, .display-5 {
+    font-weight: 700;
+}
+
+.lead {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Utility Classes */
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

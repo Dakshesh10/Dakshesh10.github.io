@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - Dakshesh Mamtora{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Game Development Blog</h1>
+        <p class="lead text-muted">Insights, experiences, and thoughts from 9+ years in game development</p>
+    </div>
+
+    {% if posts %}
+        <div class="row g-4">
+            {% for post in posts %}
+                <div class="col-lg-6">
+                    <article class="card h-100 blog-post-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar me-1"></i>
+                                    {{ post.date_posted.strftime('%B %d, %Y') }}
+                                </small>
+                                <span class="badge bg-primary">Game Development</span>
+                            </div>
+                            
+                            <h3 class="card-title">
+                                <a href="#" class="text-decoration-none text-primary">{{ post.title }}</a>
+                            </h3>
+                            
+                            <p class="card-text text-muted">{{ post.excerpt }}</p>
+                            
+                            <div class="blog-meta d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    {{ (post.content|length / 200)|round|int }} min read
+                                </small>
+                                <a href="#" class="btn btn-sm btn-outline-primary">
+                                    Read More <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Featured Post (First post expanded) -->
+        {% if posts %}
+            <section class="mt-5">
+                <h2 class="text-primary mb-4">Featured Article</h2>
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ posts[0].date_posted.strftime('%B %d, %Y') }}
+                            </small>
+                            <span class="badge bg-warning">Featured</span>
+                        </div>
+                        
+                        <h2 class="text-primary mb-4">{{ posts[0].title }}</h2>
+                        
+                        <div class="blog-content">
+                            {{ posts[0].content|replace('\n\n', '</p><p>')|replace('\n', '<br>')|safe|replace('<p>', '<p class="mb-3">')|replace('</p><p class="mb-3">', '</p><p class="mb-3">') }}
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted">
+                                    <i class="fas fa-user me-1"></i>Dakshesh Mamtora
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-clock me-1"></i>{{ (posts[0].content|length / 200)|round|int }} min read
+                                </small>
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-outline-primary me-2" onclick="sharePost('{{ posts[0].title }}')">
+                                    <i class="fas fa-share me-1"></i>Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-5">
+            <div class="empty-state">
+                <i class="fas fa-blog fa-4x text-muted mb-4"></i>
+                <h3 class="text-muted">No Blog Posts Yet</h3>
+                <p class="text-muted">
+                    I'm currently working on some exciting articles about game development. 
+                    Check back soon for insights on Unity development, blockchain gaming, and VR experiences!
+                </p>
+                <div class="mt-4">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                        <i class="fas fa-envelope me-2"></i>Get Notified
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Blog Categories -->
+    <section class="mt-5">
+        <h2 class="text-primary mb-4">Topics I Write About</h2>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fab fa-unity fa-3x text-primary mb-3"></i>
+                        <h5>Unity Development</h5>
+                        <p class="text-muted small">
+                            Tips, tricks, and best practices for Unity game development
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-mobile-alt fa-3x text-success mb-3"></i>
+                        <h5>Mobile Gaming</h5>
+                        <p class="text-muted small">
+                            Cross-platform development and mobile optimization strategies
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-link fa-3x text-warning mb-3"></i>
+                        <h5>Blockchain Gaming</h5>
+                        <p class="text-muted small">
+                            Web3 integration, NFTs, and the future of decentralized gaming
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="fas fa-vr-cardboard fa-3x text-info mb-3"></i>
+                        <h5>VR Development</h5>
+                        <p class="text-muted small">
+                            Immersive experiences and spatial interaction design
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="mt-5">
+        <div class="card bg-primary text-white">
+            <div class="card-body p-4 text-center">
+                <h3 class="mb-3">Stay Updated</h3>
+                <p class="mb-4">
+                    Get the latest insights on game development, industry trends, and technical deep-dives 
+                    delivered to your inbox.
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" id="newsletter-email">
+                            <button class="btn btn-light" type="button" onclick="subscribeNewsletter()">
+                                <i class="fas fa-bell me-2"></i>Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+function sharePost(title) {
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            url: window.location.href
+        });
+    } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Link copied to clipboard!');
+        });
+    }
+}
+
+function subscribeNewsletter() {
+    const email = document.getElementById('newsletter-email').value;
+    if (email) {
+        alert('Thank you for subscribing! You will be notified when new articles are published.');
+        document.getElementById('newsletter-email').value = '';
+    } else {
+        alert('Please enter a valid email address.');
+    }
+}
+</script>
+{% endblock %}
